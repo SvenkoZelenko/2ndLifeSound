@@ -2,12 +2,13 @@
    Global styles
 -------------------------*/
 :root {
-  --dark-blue: #0C2B4E;
+  --dark-blue: #000000;
   --mid-blue: #1A3D64;
   --light-blue: #1D546C;
-  --accent: #00c0a3;
+  --accent: #ffffff;
   --light-bg: #f4f4f4;
 }
+
 
 * {
   box-sizing: border-box;
@@ -17,6 +18,9 @@ body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
   background-color: #f4f4f4;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -58,7 +62,7 @@ nav ul {
 nav a {
   position: relative;
   text-decoration: none;
-  color: #ffffff;
+  color: rgba(226, 144, 0, 1);
   font-weight: 500;
   padding-bottom: 6px;
   transition: opacity 0.2s ease;
@@ -85,6 +89,10 @@ nav a.active::after {
   width: 100%;
 }
 
+nav a.active {
+  color: var(--accent)
+}
+
 /* ------------------------
    Main Layout
 -------------------------*/
@@ -99,18 +107,28 @@ main {
 -------------------------*/
 .hero {
   position: relative;
-  background: linear-gradient(rgba(12, 43, 78, 0.75),
-      rgba(12, 43, 78, 0.75)),
+  width: 100%;
+  max-width: none;
+
+  background:
     url("../img/background.jpg") center/cover no-repeat;
-  color: white;
-  padding: 120px 32px;
-  border-radius: 20px;
+
+  color: #000000;
+  padding: 120px 0;
+  /* remove side padding */
   text-align: center;
   margin-bottom: 80px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .hero h1 {
@@ -131,7 +149,7 @@ main {
 -------------------------*/
 .btn {
   display: inline-block;
-  background-color: var(--accent);
+  background-color: rgba(226, 144, 0, 1);
   color: white;
   padding: 14px 32px;
   text-decoration: none;
@@ -158,13 +176,13 @@ main {
 .info h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: var(--dark-blue);
+  color: rgba(226, 144, 0, 1);
 }
 
 .info h3 {
   margin-top: 40px;
   margin-bottom: 12px;
-  color: var(--mid-blue);
+  color: #000000;
 }
 
 .info p {
@@ -233,7 +251,7 @@ form {
     right: 0;
     height: 100vh;
     width: 70%;
-    background-color: #0C2B4E;
+    background-color: #000000;
 
     display: flex;
     flex-direction: column;
@@ -386,7 +404,7 @@ form {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s transform 0.3s ease;
-} 
+}
 
 .image-modal.active .image-review {
   opacity: 1;
