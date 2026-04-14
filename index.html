@@ -1,261 +1,285 @@
 <!DOCTYPE html>
 <html lang="hr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2NDLS | 2nd Life Sound</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2NDLS | Početna</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="/img/faviconshop.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="js/nav.js" defer></script>
+  <style>
+    .home-main {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    .hero-home {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("img/background.jpg") center/cover no-repeat;
+      isolation: isolate;
+      overflow: hidden;
+    }
 
-<style>
-:root {
-  --accent: rgba(226,144,0,1);
-  --black: #0d0d0d;
-  --dark: #151515;
-  --gray: #aaaaaa;
-}
+    .hero-home::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.42));
+      z-index: -2;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    .hero-home::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(226, 144, 0, 0.28), transparent 45%);
+      z-index: -1;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--black);
-  color: white;
-  line-height: 1.6;
-}
+    .hero-content {
+      width: min(1100px, 92%);
+      color: #fff;
+      padding: 80px 0;
+    }
 
-/* NAVBAR */
+    .hero-tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+    }
 
-.custom-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    .hero-content h1 {
+      font-size: clamp(2.1rem, 4.8vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      max-width: 16ch;
+    }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--accent);
-  letter-spacing: 2px;
-}
+    .hero-content p {
+      max-width: 62ch;
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: #e6e6e6;
+      margin-bottom: 30px;
+    }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-nav a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: 0.3s;
-}
+    .btn-primary,
+    .btn-secondary {
+      padding: 12px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
 
-nav a:hover {
-  color: var(--accent);
-}
+    .btn-primary {
+      background: var(--accent);
+      color: #111;
+    }
 
-/* HERO */
+    .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
 
-.hero {
-  padding: 8rem 2rem 6rem;
-  text-align: center;
-  background: url("img/background.jpg") center/cover no-repeat;
-  position: relative;
-  color: white;
-}
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6); /* jače zatamnjenje */
-  backdrop-filter: blur(2px);     /* lagani blur */
-}
+    .home-section {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 78px 0;
+    }
 
-.hero * {
-  position: relative;
-  z-index: 1;
-}
+    .home-section h2 {
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      margin-bottom: 12px;
+      color: #111;
+    }
 
+    .section-intro {
+      color: #4d4d4d;
+      margin-bottom: 30px;
+      max-width: 62ch;
+    }
 
+    .services-grid,
+    .instruments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
 
-.hero h1 {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  color: var(--accent);
-}
+    .service-card,
+    .instrument-card {
+      background: #fff;
+      border: 1px solid #e9e9e9;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    }
 
-.hero p {
-  font-size: 1.3rem;
-  color: var(--gray);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-}
+    .service-card h3,
+    .instrument-card h3 {
+      margin-bottom: 10px;
+      color: #111;
+    }
 
-.established {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  border: 1px solid var(--accent);
-  border-radius: 40px;
-  color: var(--accent);
-  font-weight: 600;
-}
+    .service-card p,
+    .instrument-card p {
+      color: #5e5e5e;
+    }
 
-/* STORY SECTION */
+    .instrument-card .origin {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      color: #a56300;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
 
-.story-section {
-  padding: 6rem 2rem;
-  background: var(--dark);
-}
+    .story-band {
+      background: linear-gradient(140deg, #111, #1a1a1a);
+      color: #fff;
+      border-radius: 22px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 20px;
+    }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
+    .story-band h2 {
+      color: #fff;
+    }
 
-.story-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
+    .story-band p {
+      color: #d2d2d2;
+    }
 
-.story-text h2 {
-  font-size: 2.8rem;
-  margin-bottom: 1.5rem;
-  color: var(--accent);
-}
+    .stats {
+      display: grid;
+      gap: 14px;
+    }
 
-.story-text p {
-  color: var(--gray);
-  margin-bottom: 1.5rem;
-}
+    .stat-item {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.03);
+    }
 
-.highlight {
-  background: #1c1c1c;
-  padding: 1.5rem;
-  border-left: 4px solid var(--accent);
-  border-radius: 10px;
-}
+    .stat-item strong {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
 
-/* VALUES */
+    .process-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      counter-reset: koraci;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.values-section {
-  padding: 6rem 2rem;
-  background: #111;
-}
+    .process-list li {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #ececec;
+      padding: 18px;
+      color: #404040;
+      position: relative;
+      padding-top: 48px;
+    }
 
-.section-title {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 4rem;
-  color: var(--accent);
-}
+    .process-list li::before {
+      counter-increment: koraci;
+      content: counter(koraci);
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #121212;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      font-size: 0.9rem;
+    }
 
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap: 2rem;
-}
+    .cta-strip {
+      text-align: center;
+      background: #f7f1e8;
+      border-top: 1px solid #edd9b7;
+      border-bottom: 1px solid #edd9b7;
+      padding: 62px 20px;
+      margin-top: 20px;
+    }
 
-.value-card {
-  background: #1a1a1a;
-  padding: 2.5rem;
-  border-radius: 15px;
-  transition: 0.3s;
-  border: 1px solid transparent;
-}
+    .cta-strip h2 {
+      color: #111;
+      margin-bottom: 12px;
+    }
 
-.value-card:hover {
-  transform: translateY(-8px);
-  border: 1px solid var(--accent);
-}
+    .cta-strip p {
+      color: #4f4f4f;
+      margin-bottom: 20px;
+    }
 
-.value-card h3 {
-  margin-bottom: 1rem;
-  color: var(--accent);
-}
+    @media (max-width: 800px) {
+      .hero-home {
+        min-height: 62vh;
+      }
 
-.value-card p {
-  color: var(--gray);
-}
+      .story-band {
+        grid-template-columns: 1fr;
+      }
 
-/* CTA */
-
-.cta-section {
-  padding: 6rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #000 0%, #111 100%);
-}
-
-.cta-section h2 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  color: var(--accent);
-}
-
-.cta-section p {
-  color: var(--gray);
-  margin-bottom: 2rem;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  background: var(--accent);
-  color: black;
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 50px;
-  transition: 0.3s;
-}
-
-.cta-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(226,144,0,0.4);
-}
-
-/* FOOTER */
-
-footer {
-  padding: 2rem;
-  text-align: center;
-  background: #000;
-  color: var(--gray);
-}
-
-/* RESPONSIVE */
-
-@media(max-width: 768px){
-  .story-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-}
-</style>
+      .home-section {
+        padding: 58px 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header class="custom-navbar">
+    <nav>
+      <div class="logo">2NDLS</div>
 
-<header class="custom-navbar">
-  <div class="logo">2NDLS</div>
-  <nav>
-    <ul>
+      <button class="hamburger" aria-label="Menu">☰</button>
+
+      <!-- Overlay -->
+      <div class="overlay"></div>
+
+      <ul>
         <button class="close-menu" aria-label="Close menu">✕</button>
         <li><a href="index.html">Početna</a></li>
         <li><a href="webshop.html">Webshop</a></li>
@@ -263,64 +287,120 @@ footer {
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="galerija.html">Galerija</a></li>
       </ul>
-  </nav>
-</header>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h1>2nd Life Sound</h1>
-  <p>Profesionalna restauracija instrumenata i ekskluzivna prodaja egzotičnih instrumenata iz cijelog svijeta.</p>
-  <div class="established">Drugi život za svaki ton</div>
-</section>
-
-<section class="story-section">
-  <div class="container">
-    <div class="story-grid">
-      <div class="story-text">
-        <h2>Restauracija s poštovanjem prema tradiciji</h2>
+  <main class="home-main">
+    <section class="hero-home">
+      <div class="hero-content">
+        <span class="hero-tag">2nd Life Sound</span>
+        <h1>Vraćamo karakter instrumentima i donosimo rijetke zvukove svijeta</h1>
         <p>
-          Svakom instrumentu pristupamo s preciznošću, iskustvom i razumijevanjem njegove povijesti.
-          Bilo da se radi o violini, violončelu ili rijetkom akustičnom instrumentu,
-          naš cilj je vratiti mu puni tonalitet i stabilnost.
+          Restauriramo akustične i žičane instrumente s poštovanjem prema njihovoj povijesti,
+          a istovremeno nudimo pažljivo odabrane egzotične i rijetke modele za glazbenike,
+          kolekcionare i studije.
         </p>
-        <div class="highlight">
-          Specijalizirani smo za konstrukcijske popravke, tonsko podešavanje,
-          obnovu laka i potpunu revitalizaciju instrumenata.
+        <div class="hero-actions">
+          <a class="btn-primary" href="kontakt.html">Zatraži procjenu restauracije</a>
+          <a class="btn-secondary" href="webshop.html">Pogledaj ponudu instrumenata</a>
         </div>
       </div>
-      <div>
-        <!-- Ovdje možeš staviti sliku radionice -->
+    </section>
+
+    <section class="home-section">
+      <h2>Naše usluge</h2>
+      <p class="section-intro">
+        Svakom instrumentu pristupamo individualno, od prve procjene do završnog testiranja tona.
+      </p>
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>Strukturna restauracija</h3>
+          <p>Sanacija pukotina, stabilizacija konstrukcije i precizno vraćanje izvornog oblika instrumenta.</p>
+        </article>
+        <article class="service-card">
+          <h3>Tonska optimizacija</h3>
+          <p>Fino podešavanje rezonancije, akcije i projekcije kako bi instrument zvučao punije i čišće.</p>
+        </article>
+        <article class="service-card">
+          <h3>Estetska obnova</h3>
+          <p>Obnova laka, detalja i završnih slojeva uz očuvanje autentičnog vizualnog karaktera.</p>
+        </article>
+        <article class="service-card">
+          <h3>Procjena i dokumentacija</h3>
+          <p>Jasna analiza stanja instrumenta i transparentan plan zahvata prije početka rada.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="story-band">
+        <div>
+          <h2>Radionica koja spaja tradiciju i suvremeni pristup</h2>
+          <p>
+            U našem radu kombiniramo klasične restauratorske tehnike i suvremene metode mjerenja tona.
+            Cilj nam je svaki instrument vratiti u vrhunsku sviračku formu, bez kompromisa na kvaliteti.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat-item"><strong>250+</strong> restauriranih instrumenata</div>
+          <div class="stat-item"><strong>40+</strong> rijetkih modela godišnje</div>
+          <div class="stat-item"><strong>1 na 1</strong> savjetovanje pri odabiru</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <h2>Izdvojeni egzotični instrumenti</h2>
+      <p class="section-intro">
+        Kurirana kolekcija instrumenata iz različitih glazbenih tradicija, spremnih za studio, pozornicu ili kolekciju.
+      </p>
+      <div class="instruments-grid">
+        <article class="instrument-card">
+          <span class="origin">Zapadna Afrika</span>
+          <h3>Kora sa 21 žicom</h3>
+          <p>Ručna izrada, topao ton i bogata harmonijska slika za akustične aranžmane.</p>
+        </article>
+        <article class="instrument-card">
+          <span class="origin">Japan</span>
+          <h3>Shamisen</h3>
+          <p>Precizan napad i karakteristična boja zvuka za tradicionalne i moderne izvedbe.</p>
+        </article>
+        <article class="instrument-card">
+          <span class="origin">Srednja Azija</span>
+          <h3>Dutar</h3>
+          <p>Minimalistički dizajn i izražajan ton koji se odlično uklapa u ambijentalnu produkciju.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <h2>Kako izgleda proces restauracije</h2>
+      <ul class="process-list">
+        <li>Prijem instrumenta i detaljna dijagnostika svakog ključnog dijela.</li>
+        <li>Dogovor opsega radova, rokova i ciljanog zvučnog rezultata.</li>
+        <li>Izvedba restauracije uz dokumentiranje svih zahvata.</li>
+        <li>Završno tonsko testiranje i predaja instrumenta s preporukama održavanja.</li>
+      </ul>
+    </section>
+
+    <section class="cta-strip">
+      <h2>Imate instrument kojem treba novi život?</h2>
+      <p>Pošaljite upit i dobit ćete jasnu procjenu stanja i preporuku idućih koraka.</p>
+      <a class="btn-primary" href="kontakt.html">Kontaktirajte nas</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-content">
+      <p>© 2026 2nd Life Sound</p>
+      <div class="footer-links">
+        <a href="index.html">Početna</a>
+        <a href="webshop.html">Webshop</a>
+        <a href="faq.html">FAQ</a>
+        <a href="kontakt.html">Kontakt</a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="values-section">
-  <h2 class="section-title">Naša ponuda</h2>
-  <div class="values-grid">
-    <div class="value-card">
-      <h3>Restauracija</h3>
-      <p>Stručna obnova žičanih i akustičnih instrumenata uz maksimalno očuvanje autentičnosti.</p>
-    </div>
-    <div class="value-card">
-      <h3>Egzotični instrumenti</h3>
-      <p>Pažljivo odabrani unikatni instrumenti iz različitih kultura i glazbenih tradicija.</p>
-    </div>
-    <div class="value-card">
-      <h3>Individualni pristup</h3>
-      <p>Svaki instrument ima svoju priču – mi joj dajemo drugi život.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <h2>Spremni dati instrumentu novi život?</h2>
-  <p>Kontaktirajte nas ili istražite naš webshop s ekskluzivnim primjercima.</p>
-  <a href="kontakt.html" class="cta-button">Kontaktiraj nas</a>
-</section>
-
-<footer>
-  © 2026 2nd Life Sound | 2NDLS
-</footer>
-
+  </footer>
 </body>
+
 </html>
