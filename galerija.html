@@ -6,11 +6,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3DHome | Početna</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="js/nav.js" defer></script>
     <script src="js/gallery.js" defer></script>
+    <style>
+        .gallery-main {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gallery-hero {
+            background: linear-gradient(130deg, #121212 0%, #1d1d1d 55%, #302000 100%);
+            color: #fff;
+            padding: 82px 20px 66px;
+            border-bottom: 1px solid rgba(226, 144, 0, 0.35);
+        }
+
+        .gallery-hero-inner,
+        .gallery-content {
+            width: min(1140px, 92%);
+            margin: 0 auto;
+        }
+
+        .gallery-hero h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 12px;
+            max-width: 30ch;
+        }
+
+        .gallery-hero p {
+            max-width: 66ch;
+            color: #dedede;
+        }
+
+        .gallery-content {
+            padding: 46px 0 50px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .grid-item {
+            background: #fff;
+            border: 1px solid #ebebeb;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 90vh;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .image-review {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            max-width: 500px;
+        }
+
+        .image-review p {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero {
+                padding: 60px 20px 50px;
+            }
+
+            .image-modal img {
+                max-width: 95vw;
+                max-height: 60vh;
+            }
+
+            .image-review {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -34,37 +173,43 @@
         </nav>
     </header>
 
-    <main>
-        <h1 style="text-align: center; color: #0C2B4E;">Naši projekti</h1>
-        <h2 style="text-align: center;">Kroz naše mnoge godine postojanja, gradili smo kuće za kupce sa raznim ukusima
-        </h2>
-        <section class="photo-grid">
-            <div class="grid-item">
-                <img src="img/photo1.jpg" class="grid-img" alt="Photo 1"
-                    data-review="Moderna kuća s velikim prozorima i prirodnim osvjetljenjem.">
-            </div>
-            <div class="grid-item">
-                <img src="img/photo2.jpg" alt="Photo 2" class="grid-img"
-                    data-review="3D printanje omogućuje i nekonvencionalne metode izgradnje.">
-            </div>
-            <div class="grid-item">
-                <img src="img/photo3.jpg" alt="Photo 3" class="grid-img"
-                    data-review="Naše usluge su idealne za bračne parove na budžetu.">
-            </div>
-            <div class="grid-item">
-                <img src="img/photo4.jpg" alt="Photo 4" class="grid-img"
-                    data-review="Luksuz i premija su sinonimi sa našom kompanijom.">
-            </div>
-            <div class="grid-item">
-                <img src="img/photo5.jpg" alt="Photo 5" class="grid-img"
-                    data-review="Veliki, svijetli prostori postaju sve dostupniji.">
-            </div>
-            <div class="grid-item">
-                <img src="img/photo6.jpg" alt="Photo 6" class="grid-img"
-                    data-review="Kuće koje printamo dobiju prepoznatljivu teksturu i eksterijer.">
+    <main class="gallery-main">
+        <section class="gallery-hero">
+            <div class="gallery-hero-inner">
+                <h1>Naši projekti</h1>
+                <p>Kroz naše mnoge godine postojanja, gradili smo kuće za kupce sa raznim ukusima. Istražite našu
+                    pažljivo odabranu galeriju izvedenih projekata.</p>
             </div>
         </section>
 
+        <section class="gallery-content">
+            <div class="photo-grid">
+                <div class="grid-item">
+                    <img src="img/photo1.jpg" class="grid-img" alt="Photo 1"
+                        data-review="Moderna kuća s velikim prozorima i prirodnim osvjetljenjem.">
+                </div>
+                <div class="grid-item">
+                    <img src="img/photo2.jpg" alt="Photo 2" class="grid-img"
+                        data-review="3D printanje omogućuje i nekonvencionalne metode izgradnje.">
+                </div>
+                <div class="grid-item">
+                    <img src="img/photo3.jpg" alt="Photo 3" class="grid-img"
+                        data-review="Naše usluge su idealne za bračne parove na budžetu.">
+                </div>
+                <div class="grid-item">
+                    <img src="img/photo4.jpg" alt="Photo 4" class="grid-img"
+                        data-review="Luksuz i premija su sinonimi sa našom kompanijom.">
+                </div>
+                <div class="grid-item">
+                    <img src="img/photo5.jpg" alt="Photo 5" class="grid-img"
+                        data-review="Veliki, svijetli prostori postaju sve dostupniji.">
+                </div>
+                <div class="grid-item">
+                    <img src="img/photo6.jpg" alt="Photo 6" class="grid-img"
+                        data-review="Kuće koje printamo dobiju prepoznatljivu teksturu i eksterijer.">
+                </div>
+            </div>
+        </section>
     </main>
 
 
