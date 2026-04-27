@@ -1,0 +1,235 @@
+.gallery-main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-hero {
+    background: linear-gradient(130deg, #121212 0%, #1d1d1d 55%, #302000 100%);
+    color: #fff;
+    padding: 82px 20px 66px;
+    border-bottom: 1px solid rgba(226, 144, 0, 0.35);
+}
+
+.gallery-hero-inner,
+.gallery-content {
+    width: min(1140px, 92%);
+    margin: 0 auto;
+}
+
+.gallery-hero h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 12px;
+    max-width: 30ch;
+}
+
+.gallery-hero p {
+    max-width: 66ch;
+    color: #dedede;
+}
+
+.gallery-content {
+    padding: 46px 0 50px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.grid-item {
+    background: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.grid-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
+}
+
+.grid-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.image-modal.active {
+    display: flex;
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    max-width: 600px;
+    width: 100%;
+}
+
+.image-modal img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.close-modal {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 1001;
+}
+
+.close-modal:hover {
+    color: var(--accent);
+}
+
+.image-review {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    width: 100%;
+    max-width: 600px;
+}
+
+.image-review p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .gallery-hero {
+        padding: 60px 20px 50px;
+    }
+
+    .gallery-hero h1 {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    .gallery-hero p {
+        font-size: 0.95rem;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .gallery-content {
+        padding: 30px 0 40px;
+    }
+
+    .image-modal {
+        padding: 15px;
+        padding-top: 60px;
+    }
+
+    .modal-wrapper {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .image-modal img {
+        max-height: 50vh;
+    }
+
+    .close-modal {
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+    }
+
+    .image-review {
+        font-size: 0.9rem;
+        padding: 12px;
+    }
+
+    .image-review p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-hero {
+        padding: 50px 15px 40px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .gallery-hero p {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    .gallery-content {
+        padding: 25px 0 35px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+
+    .image-modal {
+        padding: 10px;
+        padding-top: 50px;
+    }
+
+    .modal-wrapper {
+        gap: 12px;
+    }
+
+    .image-modal img {
+        max-height: 45vh;
+        border-radius: 8px;
+    }
+
+    .close-modal {
+        top: 10px;
+        right: 10px;
+        font-size: 1.8rem;
+    }
+
+    .image-review {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .image-review p {
+        font-size: 0.85rem;
+    }
+}
